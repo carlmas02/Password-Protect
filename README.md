@@ -7,4 +7,4 @@
 1) Python-3.7 or 3.5
 2) KivyMd
 
-Run "main.py" to view the app.
+### Run "main.py" to view the app.
