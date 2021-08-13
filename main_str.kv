@@ -1,0 +1,311 @@
+ScreenManager:
+    LoginScreen:
+    SignupScreen:
+    MainScreen:
+    DetailScreen:
+    AccountScreen:
+    UpdateScreen:
+
+<LoginScreen>
+
+    name : "login_screen"
+    MDLabel:
+        
+        text:"Login"
+        pos_hint : {"center_x" : 0.63,"center_y" : 0.7}
+        font_name:"semibold"
+        font_size:23
+        theme_text_color:"Custom"
+        text_color: (0,1,0,1)
+
+    MDLabel:
+  
+        text:"Please Login to continue"
+        pos_hint : {"center_x" : 0.63,"center_y" : 0.65}
+        font_name:"Light"
+        font_size:15
+ 
+    MDCard:
+        focus_behavior: True
+        size_hint: None, None
+        size: "270dp", "170dp"
+        pos_hint: {"center_x": .5, "center_y": .45}
+        elevation :50
+               
+
+    MDTextField:
+        id : username
+        hint_text : "Username"
+        pos_hint : {"center_x":0.5,"center_y":0.52}
+        icon_right : "account"
+        icon_right_color : app.theme_cls.primary_color
+        halign: "left"
+        size_hint_x : None
+        width : 250
+
+        
+
+    MDTextField:
+        id : password
+        hint_text : "Password"
+        pos_hint : {"center_x":0.5,"center_y":0.4}
+        icon_right : "eye-off"
+        icon_right_color : app.theme_cls.primary_color
+        halign: "left"
+        size_hint_x : None
+        width : 250
+        password : True
+
+    MDRoundFlatButton:
+        text : "Login"
+        font_name:"semibold"
+        pos_hint:{"center_x":0.75,"center_y":0.25}
+        on_press: app.check()
+
+
+    MDLabel:
+  
+        text:"Don't have an account?"
+        pos_hint : {"center_x" : 0.54,"center_y" : 0.1}
+        font_name:"Light"
+        font_size:15
+
+    MDRoundFlatButton:
+        text : "Signup"
+        font_name:"semibold"
+        pos_hint:{"center_x":0.79,"center_y":0.1}
+        on_press: root.manager.current= 'signup_new'
+
+
+<SignupScreen>
+    name : "signup_new"
+    MDLabel:
+        
+        text:"Signup"
+        pos_hint : {"center_x" : 0.63,"center_y" : 0.76}
+        font_name:"semibold"
+        font_size:23
+        theme_text_color:"Custom"
+        text_color: (0,1,0,1)
+
+    MDCard:
+        focus_behavior: True
+        size_hint: None, None
+        size: "270dp", "200dp"
+        pos_hint: {"center_x": .5, "center_y": .5}
+        elevation :50
+
+    MDTextField:
+        id : signup_name
+        hint_text : "Name"
+        pos_hint : {"center_x":0.5,"center_y":0.61}
+        icon_right : "account"
+        icon_right_color : app.theme_cls.primary_color
+        halign: "left"
+        size_hint_x : None
+        width : 250
+
+    MDTextField:
+        id : signup_username
+        hint_text : "Username"
+        pos_hint : {"center_x":0.5,"center_y":0.495}
+        icon_right : "account"
+        icon_right_color : app.theme_cls.primary_color
+        halign: "left"
+        size_hint_x : None
+        width : 250
+
+    MDTextField:
+        id : signup_password
+        hint_text : "Password"
+        pos_hint : {"center_x":0.5,"center_y":0.38}
+        icon_right : "account"
+        icon_right_color : app.theme_cls.primary_color
+        halign: "left"
+        size_hint_x : None
+        width : 250
+        password : True
+
+    MDRoundFlatButton:
+        text : "Signup"
+        font_name:"semibold"
+        pos_hint:{"center_x":0.75,"center_y":0.25}
+        on_press: app.create_user()
+
+<MainScreen>
+    name :"main"
+
+    Screen:
+        
+
+        MDBoxLayout:
+            orientation: "vertical"
+
+            MDToolbar :
+                id :"bar"
+                title : "My Vault"
+                font_name : "semibold"
+                right_action_items: [["dots-vertical", lambda x: app.callback(x)]]
+
+            ScrollView:
+                MDList :
+                    id : list_tray
+                                
+        
+    MDFloatingActionButton:
+        icon: 'account-plus'
+        pos_hint : {"center_x":0.8,"center_y":0.1}
+        on_press : root.manager.current= 'detail'
+
+<DetailScreen>:
+    name : "detail"
+    
+    Screen:
+        MDBoxLayout:
+            orientation: "vertical"
+
+            MDToolbar :
+                title : "Add Service"
+                font_name : "semibold"
+
+            MDLabel:
+
+
+        MDCard:
+            focus_behavior: True
+            size_hint: None, None
+            size: "270dp", "200dp"
+            pos_hint: {"center_x": .5, "center_y": .5}
+            elevation :50
+
+        MDTextField:
+            id : service_name
+            hint_text : "Name"
+            pos_hint : {"center_x":0.5,"center_y":0.61}
+            icon_right : "account"
+            icon_right_color : app.theme_cls.primary_color
+            halign: "left"
+            size_hint_x : None
+            width : 250
+
+        MDTextField:
+            id : service_username
+            hint_text : "Username"
+            pos_hint : {"center_x":0.5,"center_y":0.495}
+            icon_right : "account"
+            icon_right_color : app.theme_cls.primary_color
+            halign: "left"
+            size_hint_x : None
+            width : 250
+
+        MDTextField:
+            id : service_password
+            hint_text : "Password"
+            pos_hint : {"center_x":0.5,"center_y":0.38}
+            icon_right : "account"
+            icon_right_color : app.theme_cls.primary_color
+            halign: "left"
+            size_hint_x : None
+            width : 250
+            password : True
+
+        MDRoundFlatButton:
+            text : "Submit"
+            font_name:"semibold"
+            pos_hint:{"center_x":0.75,"center_y":0.25}
+            on_press: app.submit_service()
+
+<AccountScreen>:
+    name : "account"
+    Screen:
+        MDBoxLayout:
+            orientation: "vertical"
+
+            MDToolbar :
+                title : "Account Details"
+                font_name : "semibold"
+                right_action_items: [["dots-vertical", lambda x: app.update_info(x)]]
+
+            MDLabel:
+
+
+        MDCard:
+            focus_behavior: True
+            size_hint: None, None
+            size: "270dp", "200dp"
+            pos_hint: {"center_x": .5, "center_y": .5}
+            elevation :50
+
+        MDLabel:
+            id : account_service
+            text : 'test1'
+            pos_hint : {"center_x":0.7,"center_y":0.61}
+            icon_right_color : app.theme_cls.primary_color
+            width : 250
+            font_name:"semibold"
+
+        MDLabel:
+            id : account_username
+            text : "test2"
+            pos_hint : {"center_x":0.7,"center_y":0.495}
+            icon_right_color : app.theme_cls.primary_color
+            width : 250
+            font_name:"semibold"
+
+        MDLabel:
+            id : account_password
+            text : "Password"
+            pos_hint : {"center_x":0.7,"center_y":0.38}
+            icon_right_color : app.theme_cls.primary_color
+            width : 250
+            font_name:"semibold"
+
+        MDRoundFlatButton:
+            text : "Back"
+            font_name:"semibold"
+            pos_hint:{"center_x":0.75,"center_y":0.25}
+            on_press: root.manager.current = 'main'
+
+
+<UpdateScreen>
+    name : "update"
+    Screen:
+        MDBoxLayout:
+            orientation: "vertical"
+
+            MDToolbar :
+                title : "Update Information"
+                font_name : "semibold"
+                
+
+            MDLabel:
+
+        #MdLabel :
+            #id : update_service
+            #pos_hint : {"center_x":0.4,"center_y":0.8}
+            #halign: "left"
+            #size_hint_x : None
+            #width : 250
+
+        MDTextField:
+            id : update_username
+            hint_text : "Username"
+            pos_hint : {"center_x":0.45,"center_y":0.7}
+            icon_right : "account"
+            icon_right_color : app.theme_cls.primary_color
+            halign: "left"
+            size_hint_x : None
+            width : 250
+
+        MDTextField:
+            id : update_password
+            hint_text : "Password"
+            pos_hint : {"center_x":0.45,"center_y":0.6}
+            icon_right : "eye-off"
+            icon_right_color : app.theme_cls.primary_color
+            halign: "left"
+            size_hint_x : None
+            width : 250
+            password : True
+
+        
