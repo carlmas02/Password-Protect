@@ -14,7 +14,7 @@ from kivy.core.window import Window
 Window.size = (350, 600)
 
 import requests
-BASE = "http://testingcarl.pythonanywhere.com/" 
+BASE = "###" 
 
 
 class LoginScreen(Screen):
